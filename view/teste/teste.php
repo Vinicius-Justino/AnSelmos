@@ -1,0 +1,21 @@
+<?php
+    $caminho_raiz = "";
+    while(count(glob($caminho_raiz."index.php")) == 0) {
+        $caminho_raiz = $caminho_raiz."../";
+    }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="<?php echo $caminho_raiz?>js/arruma_links.js"></script>
+</head>
+<body onload="arruma_links()">
+    <a href="index">para "index.php"</a>
+</body>
+</html>
