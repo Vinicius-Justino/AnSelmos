@@ -16,11 +16,17 @@ function arruma_links(caminho_raiz) {
 }
 
 function arruma_imagens(caminho_raiz) {
+    profundidade_pagina = caminho_raiz.split("/").length - 1;
     document.querySelectorAll("img").forEach(function(tag) {
         caminho_foto = "";
         pulou_inicio = false;
+        subpastas_puladas = 0;
         for (let caracter of tag.src) {
-            if (caracter == "/" && !pulou_inicio) {
+            if (caracter == "/" && (!pulou_inicio || subpastas_puladas < profundidade_pagina)) {
+                if (pulou_inicio) {
+                    subpastas_puladas++;
+                }
+
                 pulou_inicio = (caminho_foto == NOME_SITE);
                 caminho_foto = "";
             } else {
