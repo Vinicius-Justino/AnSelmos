@@ -21,7 +21,7 @@
 </head>
 <body onload="arruma_links('<?php echo $caminho_raiz?>'); arruma_imagens('<?php echo $caminho_raiz?>')">
     <?php Componentes::header()?>
-    <main id=fundo-cardapio>
+    <main>
 
     </main>
     <?php Componentes::footer()?>

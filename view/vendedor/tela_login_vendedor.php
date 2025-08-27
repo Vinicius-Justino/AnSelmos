@@ -3,6 +3,8 @@
     while(count(glob($caminho_raiz."index.php")) == 0) {
         $caminho_raiz = $caminho_raiz."../";
     }
+
+    include_once $caminho_raiz."factory/componentes.php";
 ?>
 
 <!DOCTYPE html>
@@ -11,23 +13,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Login</title>
+    <link rel="icon" type="image/x-icon" href="<?php echo $caminho_raiz?>img/favicon.ico">
 
-    <!-- importar css e js assim -->
     <link rel="stylesheet" href="<?php echo $caminho_raiz?>css/style.css">
     <script src="<?php echo $caminho_raiz?>js/arruma_links.js"></script>
 </head>
-<body onload="arruma_links(); arruma_imagens();" id="telaLoginVendedor">
-    <!-- fazer links internos assim -->
-    
-        <form action="" method="post">
-            <label>Coloque o nome do seu usuário: </label><br/>
-            <input type="text" name=""/><br/>
-            <label>Digite sua senha: </label><br/>
-            <input type="password" name="" /><br/>
-            <input type="submit" value="Entrar">
-            <a href="index">Voltar</a>
-        </form>
-    
+<body onload="arruma_links('<?php echo $caminho_raiz?>'); arruma_imagens('<?php echo $caminho_raiz?>')">
+    <?php Componentes::header()?>
+    <main id="tela-login">
+        <div>
+            <section style="align-items: flex-start">
+                <img src="logo_footer.png" alt="Imagem da logotipo do AnSelmo">
+                <h2>Fazer login</h2>
+                <p>Ir para o Painel de Controle</p>
+            </section>
+            <section style="align-items: flex-end">
+                <form action="<?php echo $caminho_raiz?>control/login.php" method="post">
+                    <input type="password" name="cx_senha" placeholder="Senha"><br>
+                    <input type="submit" value="Entrar">
+                </form>
+            </section>
+        </div>
+    </main>
+    <?php Componentes::footer()?>
 </body>
 </html>
