@@ -170,3 +170,140 @@ footer navbar img{
     height: 8vh;
     width: 8vh;
 }
+
+
+
+
+
+/* css para lista_anunciados_vendedor.php */
+
+/* css para tela_anunciar_vendedor.php */
+#tela-anunciar {
+    justify-content: center;
+    align-items: center;
+}
+
+#tela-anunciar h2 {
+    color: #db0007;
+}
+
+#tela-anunciar > div {
+    width: 35vw;
+    height: 80vh;
+
+    border: 2px solid grey;
+    border-radius: 4px;
+    
+    display: flex;
+}
+
+#tela-anunciar section {
+    height: 100%;
+    width: 100%;
+    padding: 2vh 2vw;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#tela-anunciar form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 3%;
+}
+
+#tela-anunciar label{
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+}
+
+#tela-anunciar input[type="file"] {
+    display: flex;
+    width: 50%;
+    padding: 10px;
+    border: 2px solid #ffbc0d;
+    border-radius: 4px;
+    outline: none;
+}
+
+#tela-anunciar input[type="text"] {
+    display: flex;
+    width: 50%;
+    padding: 10px;
+    border: 2px solid #ffbc0d;
+    border-radius: 4px;
+    outline: none;
+}
+
+#tela-anunciar input[type="number"] {
+    display: flex;
+    width: 50%;
+    padding: 10px;
+    border: 2px solid #ffbc0d;
+    border-radius: 4px;
+    outline: none;
+}
+
+span{
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+    outline: none;
+}
+
+
+#tela-anunciar input[type="submit"]{
+    background-color: white;
+    color: #ffbc0d;
+    padding: 10px 15px;
+    margin-top: 2px;
+    border: 2px solid #ffbc0d;
+    cursor: pointer;
+    font-size: 1.5em;
+    border-radius: 10px;
+    transition: 0.5s;
+
+    align-self: flex-end;
+}
+#tela-anunciar input[type="submit"]:hover{
+    background-color: #ffbc0d;
+    color: white;
+}
+/* css para tela_ferramentas_vendedor.php */
+
+
+#tela-ferramentas {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#tela-ferramentas > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    rotate: 30deg;
+}
+
+.triangulo {
+   width: 0px;
+   height: 0px;
+   border-style: solid;
+   border-width: 0 200px 200px 200px;
+   border-color: transparent transparent #db0007 transparent;
+   transform: rotate(0deg);
+}
+
+.retangulo {
+   width: 0px;
+   height: 0px;
+   border-style: solid;
+   border-width: 300px 100px;
+   border-color: #db0007;
+   transform: rotate(0deg);
+}

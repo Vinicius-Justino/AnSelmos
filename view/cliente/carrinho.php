@@ -5,6 +5,7 @@
     }
 
     include_once $caminho_raiz."factory/componentes.php";
+    include_once $caminho_raiz."factory/crud.php";
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +23,10 @@
 <body onload="arruma_links('<?php echo $caminho_raiz?>'); arruma_imagens('<?php echo $caminho_raiz?>')">
     <?php Componentes::header()?>
     <main>
-
+        <?php
+            echo CRUD::update("tb_categorias", ["nome"=>"bebidas"], ["codigo"=>1]);    
+            //var_dump(CRUD::read("tb_categorias", ["codigo", "nome"], ["codigo"=>1]));
+        ?>
     </main>
     <?php Componentes::footer()?>
 </body>

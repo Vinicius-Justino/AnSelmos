@@ -13,7 +13,7 @@
                     self::$usuario,self::$senha);
                 }
             }catch(Exception $ex){
-                echo 'Mesagens '.$ex->getMessage();
+                echo 'Mensagens '.$ex->getMessage();
                 die;
             }
             return self::$connect;
