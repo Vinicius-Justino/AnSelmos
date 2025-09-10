@@ -24,9 +24,13 @@
     <?php Componentes::header()?>
     <main>
         <?php
-            echo CRUD::update("tb_categorias", ["nome"=>"bebidas"], ["codigo"=>1]);    
-            //var_dump(CRUD::read("tb_categorias", ["codigo", "nome"], ["codigo"=>1]));
+            $phpArray = var_dump(CRUD::read("tb_categorias", ["codigo", "nome"], []));
+            $jsonArray = json_encode($phpArray);
         ?>
+        <script type='text/javascript'>
+            let jsArray = <?php echo "$javascript_array = ". $jsonArray . ";\n"; ?>;
+            console.log($jsArray);
+        </script>
     </main>
     <?php Componentes::footer()?>
 </body>

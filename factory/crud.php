@@ -2,6 +2,39 @@
     include_once "conexao.php";
 
     class CRUD {
+        public static function create($tabela, $colunas) {
+            $conexao = new Caminho;
+
+            $query = "INSERT INTO ".$tabela." (";
+            for ($i = 0; $i < count($colunas); $i++) {
+                $query = $query.array_keys($colunas)[$i];
+
+                if ($i != count($colunas) - 1) {
+                    $query = $query.", ";
+                } else {
+                    $query = $query.") VALUES (";
+                }
+            }
+
+            for ($i = 0; $i < count($colunas); $i++) {
+                $coluna = array_keys($colunas)[$i];
+                if (gettype($coluna) != "string") {
+                    $query = $query.$colunas[$coluna];
+                } else {
+                    $query = $query."'".$colunas[$coluna]."'";
+                }
+
+                if ($i != count($colunas) - 1) {
+                    $query = $query.", ";
+                } else {
+                    $query = $query.")";
+                }
+            }
+
+            $resultado = $conexao->getConn()->prepare($query);
+            $resultado->execute();
+        }
+
         public static function read($tabela, $colunas, $filtros) {
             $conexao = new Caminho;
 
@@ -10,7 +43,7 @@
                 $query = $query.$colunas[$i];
 
                 if ($i != count($colunas) - 1) {
-                    $query  = $query.", ";
+                    $query = $query.", ";
                 }
             }
 
@@ -22,7 +55,11 @@
 
             for ($i = 0; $i < count($filtros); $i++) {
                 $filtro = array_keys($filtros)[$i];
-                $query = $query.$filtro."=".$filtros[$filtro];
+                if (gettype($filtros[$filtro]) != "string") {
+                    $query = $query.$filtro."=".$filtros[$filtro];
+                } else {
+                    $query = $query.$filtro."='".$filtros[$filtro]."'";
+                }
 
                 if ($i < count($filtros) - 1) {
                     $query = $query." AND ";
@@ -40,7 +77,11 @@
             $query = "UPDATE ".$tabela." SET ";
             for ($i = 0; $i < count($colunas); $i++) {
                 $coluna = array_keys($colunas)[$i];
-                $query = $query.$coluna."=".$colunas[$coluna];
+                if (gettype($colunas[$coluna]) != "string") {
+                    $query = $query.$coluna."=".$colunas[$coluna];
+                } else {
+                    $query = $query.$coluna."='".$colunas[$coluna]."'";
+                }
 
                 if ($i < count($colunas) - 1) {
                     $query = $query.", ";
@@ -53,20 +94,45 @@
 
             for ($i = 0; $i < count($filtros); $i++) {
                 $filtro = array_keys($filtros)[$i];
-                $query = $query.$filtro."=".$filtros[$filtro];
+                if (gettype($filtros[$filtro]) != "string") {
+                    $query = $query.$filtro."=".$filtros[$filtro];
+                } else {
+                    $query = $query.$filtro."='".$filtros[$filtro]."'";
+                }
 
                 if ($i < count($filtros) - 1) {
                     $query = $query." AND ";
                 }
             }
 
-            return $query;
-            //$resultado = $conexao->getConn()->prepare($query);
-            //$resultado->execute();
+            $resultado = $conexao->getConn()->prepare($query);
+            $resultado->execute();
         }
 
-        public static function delete($tabela, $filtro) {
+        public static function delete($tabela, $filtros) {
+            if (count($filtros) == 0) {
+                return;
+            }
+
             $conexao = new Caminho;
+
+            $query = "DELETE FROM ".$tabela." WHERE ";
+
+                for ($i = 0; $i < count($filtros); $i++) {
+                $filtro = array_keys($filtros)[$i];
+                if (gettype($filtros[$filtro]) != "string") {
+                    $query = $query.$filtro."=".$filtros[$filtro];
+                } else {
+                    $query = $query.$filtro."='".$filtros[$filtro]."'";
+                }
+
+                if ($i < count($filtros) - 1) {
+                    $query = $query." AND ";
+                }
+            }
+
+            $resultado = $conexao->getConn()->prepare($query);
+            $resultado->execute();
         }
     }
 ?>
