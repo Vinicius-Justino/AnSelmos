@@ -315,3 +315,9 @@ span{
    border-color: #db0007;
    transform: rotate(0deg);
 }
+
+#tela-anunciar-direita {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

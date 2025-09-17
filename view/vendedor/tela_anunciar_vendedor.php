@@ -32,11 +32,21 @@
     <?php Componentes::header_vendedor()?>
     <main id="tela-anunciar">
         <div>
-            <section>
-
+            <section id="tela-anunciar-direita">
+                <h2>
+                    Essa metade da tela fica pra próxima entrega
+                </h2>
+                <img src="placeholder.jpg" alt="">
+                <div style="display: none" class="card">
+                    <img class="card-foto" src="Sanduiches/Sanduiche_icon.png" alt="foto do seu produto">
+                    <div class="card-info">
+                        <span class="card-nome">Lanche</span>
+                        <span class="card-preco">R$ 00,00</span>
+                    </div>
+                </div>
             </section>
             <section>
-                <form action="" method="post">
+                <form action="<?php echo $caminho_raiz?>model/adicionar_produto.php" method="post">
         
                 <label for="imagem">Foto do produto:</label>
                 <input type="file" name="cx_imagem" id="imagem" placeholder="Adicione a imagem do produto" required maxlength="90">
